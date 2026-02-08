@@ -1,0 +1,48 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Distribution / packaging
+.Python
+env/
+bin/
+include/
+libraries/
+lib/
+share/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Unit test / coverage reports
+htmlcov/
+tests/coverage/coverage.xml
+. coverage
+*.cover
+.cache
+nosetests.xml
+coverage.xml
+
+# Translations
+*.mo
+*.pot
+
+# Django stuff:
+*.log
+staticfiles/
+media/
+
+# Flask stuff:
+instance/
+.mypy_cache/
+
+# VS Code settings
+.vscode/
+
+# pyenv
+.python-version
+
+# Other files
+.idea/
+*.swp
