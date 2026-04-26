@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Neural Ecosystem Empire</title>
+  <style>
+    :root {
+      --glass: rgba(12, 20, 32, 0.63);
+      --edge: rgba(255, 255, 255, 0.12);
+      --text: #e8edf7;
+      --muted: #9cb1ca;
+      --accent: #7dc3ff;
+      --chip: rgba(26, 35, 52, 0.72);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; background: #0d1320; color: var(--text); font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+    .wrap { position: fixed; inset: 0; overflow: hidden; }
+    #game { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; image-rendering: crisp-edges; }
+
+    .hud-panel {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      width: 320px;
+      padding: 18px;
+      border: 1px solid var(--edge);
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(18,26,40,.78), rgba(8,14,25,.6));
+      backdrop-filter: blur(8px);
+      box-shadow: 0 12px 40px rgba(0,0,0,.35);
+    }
+    .hud-title { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
+    .hud-big { font-size: 38px; font-weight: 700; line-height: 1.05; margin-bottom: 10px; }
+    #hudStats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+    #hudStats label { display: block; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; margin-bottom: 2px; }
+    #hudStats strong { font-size: 44px; line-height: .95; font-weight: 800; }
+
+    .side {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+      width: 360px;
+      max-height: calc(100% - 36px);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card {
+      border: 1px solid var(--edge);
+      border-radius: 14px;
+      background: var(--glass);
+      backdrop-filter: blur(6px);
+      padding: 12px;
+      overflow: auto;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 1.4px; }
+    .muted { color: var(--muted); }
+
+    #toolbar { display: flex; flex-wrap: wrap; gap: 6px; }
+    #toolbar button, .bottombar button {
+      border: 1px solid var(--edge);
+      border-radius: 999px;
+      background: var(--chip);
+      color: var(--text);
+      font-size: 12px;
+      padding: 7px 12px;
+      cursor: pointer;
+    }
+
+    .bottombar {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 16px;
+      width: min(980px, calc(100% - 40px));
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid var(--edge);
+      border-radius: 18px;
+      background: var(--glass);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.4);
+    }
+
+    .bottombar .spacer { flex: 1; }
+    input[type='range'] { width: 140px; }
+    #events { max-height: 150px; overflow: auto; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <canvas id="game"></canvas>
+
+    <section class="hud-panel">
+      <div class="hud-title">Neural Ecosystem</div>
+      <div class="hud-big">Live Evolution</div>
+      <div id="hudStats"></div>
+      <div id="events"></div>
+    </section>
+
+    <aside class="side">
+      <section class="card"><h3>Tools</h3><div id="toolbar"></div></section>
+      <section class="card"><h3>Economy</h3><div id="economy"></div></section>
+      <section class="card"><h3>Simulation</h3><div id="simInfo"></div></section>
+      <section class="card"><h3>Diplomacy</h3><div id="diplomacy"></div></section>
+      <section class="card"><h3>Inspect Tile</h3><div id="inspect" class="muted">Click any tile while in Inspect mode.</div></section>
+    </aside>
+
+    <nav class="bottombar">
+      <button id="btnPause">Pause / Resume</button>
+      <label>Speed <input id="speed" type="range" min="0.2" max="3" value="1" step="0.1" /></label>
+      <button id="btnResearch">Research</button>
+      <button id="btnSave">Save</button>
+      <button id="btnLoad">Load</button>
+      <button id="btnReset">Reset</button>
+      <span class="spacer"></span>
+      <span class="muted">Click to interact. Esc = Inspect mode.</span>
+    </nav>
+  </main>
+
+  <script src="ecosystem_rpg.js"></script>
+</body>
+</html>
