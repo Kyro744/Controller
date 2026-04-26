@@ -1,61 +1,59 @@
 # Controller Documentation
 
-## Features
-- Comprehensive support for various devices
-- Easy installation and configuration
-- Detailed usage examples
+## Pixel Ecosystem Empire RPG (HTML - Recommended)
 
-## Installation
-Follow these steps to install the project:
-1. Clone the repository: `git clone https://github.com/Kyro744/Controller.git`
-2. Navigate to the directory: `cd Controller`
-3. Install dependencies: `npm install`
+## Super quick start (lazy mode)
+Just run:
 
-## Usage Examples
-```javascript
-// Example usage of the Controller
-const Controller = require('./index');
-
-const myController = new Controller();
-myController.start();
+```bash
+python run_game.py
 ```
 
-## Project Structure
-- `src/` - Contains the source code
-- `docs/` - Documentation files
-- `examples/` - Example implementations
+It will start a local server and open the game in your browser automatically.
 
-## Supported Devices
-- Device A
-- Device B
-- Device C
+This repository includes a **browser-playable** top-down pixel ecosystem/empire simulation:
 
-## Protocols
-- Protocol 1
-- Protocol 2
+- `ecosystem_rpg.html`
+- `ecosystem_rpg.js`
 
-## Configuration
-Add your configuration settings in the `config.json` file. Example:
-```json
-{
-  "device": "Device A",
-  "protocol": "Protocol 1"
-}
+### How to run
+1. From the repo root, start a local web server:
+   ```bash
+   python -m http.server 8000
+   ```
+2. Open your browser to:
+   ```
+   http://localhost:8000/ecosystem_rpg.html
+   ```
+
+### Interaction model (no WASD movement)
+This version is simulation-first and click-driven (closer to the style in your reference):
+
+- **Inspect**: Click map tiles to inspect biome/building/resource ownership.
+- **Sprinkle Food**: Click/drag to drop food particles for ecosystem behavior.
+- **Spawn Creature**: Click to spawn villagers/wildlife/raiders.
+- **Claim Territory**: Click to expand borders.
+- **Build tools**: Place houses/farms/mines/markets/towers with resource costs.
+- **Bottom controls**: Pause/resume, speed slider, research, save/load/reset.
+- **Esc**: Return to Inspect mode.
+
+### Included systems
+- Procedural world generation with distinct biome coloring and coastline/water.
+- Autonomous ecosystem simulation (villagers, rabbits, wolves, raiders).
+- Empire-building systems (construction, influence borders, claiming).
+- Economy simulation (resources, prices, taxes, daily production/consumption).
+- Diplomacy + raids + dynamic random events.
+- Day/night + weather effects.
+- Save/load using browser localStorage.
+
+---
+
+## Legacy desktop prototype (optional)
+A previous Tkinter prototype is still present:
+
+- `ecosystem_rpg.py`
+
+Run with:
+```bash
+python ecosystem_rpg.py
 ```
-
-## Roadmap
-- [ ] Feature 1
-- [ ] Feature 2
-
-## Contributing Guidelines
-1. Fork the repository.
-2. Create a new branch: `git checkout -b feature-branch`
-3. Make your changes and commit them.
-4. Push to the branch: `git push origin feature-branch`
-5. Create a pull request.
-
-## Troubleshooting
-If you encounter any issues, check the following:
-- Ensure all dependencies are installed.
-- Check the configuration settings.
-- Review the logs for any error messages.
